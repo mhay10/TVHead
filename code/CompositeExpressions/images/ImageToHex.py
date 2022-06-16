@@ -36,7 +36,7 @@ def convert(lst, shape):
 
 
 if len(sys.argv) == 2:
-    print("Usage: ImageToHex.py <img path>")
+    print("Usage: python ImageToHex.py <img path>")
 
 path = sys.argv[1]
 img = Image.open(path).convert("L")
