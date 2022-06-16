@@ -35,6 +35,9 @@ def convert(lst, shape):
     return [convert(lst[i * n : (i + 1) * n], shape[1:]) for i in range(len(lst) // n)]
 
 
+if len(sys.argv) == 2:
+    print(f"Usage: ImageToHex.py <img path>")
+
 path = sys.argv[1]
 img = Image.open(path).convert("L")
 width, height = img.size
