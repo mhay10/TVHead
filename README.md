@@ -22,3 +22,8 @@ A project that controls a tv through composite video and displays different expr
 ### Wiring Schematic
 
 <img src="https://raw.githubusercontent.com/mhay10/TVHead/master/Schematic_TV%20Head_2022-06-15.png" width="600" />
+
+### Breadboard/PCB layout
+
+The values in yellow are the resistor values and the composite jack  
+<img src="https://raw.githubusercontent.com/mhay10/TVHead/master/IMG_0062.JPG" width="600" />
