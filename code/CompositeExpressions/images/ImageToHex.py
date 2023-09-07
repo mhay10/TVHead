@@ -22,31 +22,35 @@ binToHex = {
     "1111": "f",
 }
 
-
+# Convert binary value to hex value
 def toHex(binary):
     return "0x" + binToHex[binary[:4]] + binToHex[binary[4:]]
 
-
+# Convert 1D array to 2D array
 def convert(lst, shape):
+    # Stop is shape is 1D
     if len(shape) == 1:
         return lst
-
+    
     n = reduce(mul, shape[1:])
     return [convert(lst[i * n : (i + 1) * n], shape[1:]) for i in range(len(lst) // n)]
 
-
+# Check for image file
 if len(sys.argv) == 2:
     print("Usage: python ImageToHex.py <img path>")
 
+# Open image using PIL
 path = sys.argv[1]
 img = Image.open(path).convert("L")
 width, height = img.size
 
+# Convert pixels to black/white 2D array
 pixels = []
 for pixel in img.getdata():
     pixels.append(0 if pixel < 255 else 1)
 pixels = convert(pixels, (width, height))
 
+# Turn image into custom chars
 chop = 8
 tiles = {}
 for i in range(0, width, chop):
@@ -61,6 +65,7 @@ for i in range(0, width, chop):
 
         tiles[f"From ({i},{j}) to ({i+chop},{j+chop}): "] = tile
 
+# Print font values as string
 vals = []
 for tile, data in tiles.items():
     print(tile, end="")
